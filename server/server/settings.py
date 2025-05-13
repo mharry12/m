@@ -17,7 +17,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
 "127.0.0.1",  # For local testing
 "localhost",
-"stream-7te2.onrender.com"
+"stream-l2du.onrender.com"
 ]
 
 # Application definition
