@@ -77,7 +77,8 @@ AUTHENTICATION_BACKENDS = [
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    "https://cindycol.vercel.app",
+    "https://streamynine4634676343553-63fk-links.vercel.app",
+
 
 ]
 SIMPLE_JWT = {
