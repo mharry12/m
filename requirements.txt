@@ -5,7 +5,6 @@ cffi==1.17.1
 channels==4.2.0
 charset-normalizer==3.4.2
 cryptography==44.0.1
-dj-database-url==3.0.1
 Django==5.2
 django-allauth==65.4.1
 django-cors-headers==4.7.0
