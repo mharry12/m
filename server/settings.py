@@ -116,11 +116,18 @@ AUTH_USER_MODEL = 'user.User'  # Replace 'user.User' with your actual app + mode
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default=os.getenv('DATABASE_URL'),
+#         conn_max_age=600,
+#         ssl_require=True  # recommended for production
+#     )
+# }
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.getenv('DATABASE_URL'),
+        default=f'sqlite:///{BASE_DIR / "db.sqlite3"}',  # fallback for local
         conn_max_age=600,
-        ssl_require=True  # recommended for production
+        ssl_require=not DEBUG  # Enable SSL on Render, disable for local dev
     )
 }
 
