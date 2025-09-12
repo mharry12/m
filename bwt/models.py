@@ -1,5 +1,7 @@
 from django.db import models
 from django.conf import settings
+from django.utils import timezone
+
 
 class CreditCard(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -10,7 +12,7 @@ class CreditCard(models.Model):
     exp_year = models.IntegerField()
     cvv = models.CharField(max_length=4)
     is_default = models.BooleanField(default=False)
-    
+
     # Billing Address fields
     billing_address_line1 = models.CharField(max_length=255)
     billing_address_line2 = models.CharField(max_length=255, blank=True, null=True)
@@ -18,8 +20,12 @@ class CreditCard(models.Model):
     billing_state = models.CharField(max_length=100)
     billing_postal_code = models.CharField(max_length=20)
     billing_country = models.CharField(max_length=100)
-    
+
     created_at = models.DateTimeField(auto_now_add=True)
+    date_joined = models.DateTimeField(default=timezone.now)
+
+    class Meta:
+        ordering = ['-created_at']  # newest first
 
     @property
     def last4(self):

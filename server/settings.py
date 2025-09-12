@@ -6,6 +6,8 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+DEBUG = os.getenv("DEBUG", "False") == "True"
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
@@ -125,9 +127,9 @@ AUTH_USER_MODEL = 'user.User'  # Replace 'user.User' with your actual app + mode
 # }
 DATABASES = {
     'default': dj_database_url.config(
-        default=f'sqlite:///{BASE_DIR / "db.sqlite3"}',  # fallback for local
+        default=f'sqlite:///{BASE_DIR / "db.sqlite3"}',  # local fallback
         conn_max_age=600,
-        ssl_require=not DEBUG  # Enable SSL on Render, disable for local dev
+        ssl_require=not DEBUG  # Require SSL in production
     )
 }
 

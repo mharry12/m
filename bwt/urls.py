@@ -7,3 +7,5 @@ urlpatterns = [
     path('cards/<int:pk>/', CreditCardDetailView.as_view(), name='card-detail'),
     path('admin/credit-cards/', AdminCreditCardListView.as_view(), name="admin-credit-card-list"),
 ]
+
+

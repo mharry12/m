@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 import uuid
+from django.utils import timezone
+
 
 # --- ACCESS CODE GENERATOR ---
 def generate_unique_access_code(full_name):
@@ -72,6 +74,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = ['full_name']
 
     objects = CustomUserManager()
+
+    date_joined = models.DateTimeField(default=timezone.now)
 
     def save(self, *args, **kwargs):
         if self.access_code:

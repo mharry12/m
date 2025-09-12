@@ -32,9 +32,9 @@ class CreditCardListCreateView(generics.ListCreateAPIView):
         user = self.request.user
         print("AUTHED USER:", user, "| ROLE:", getattr(user, 'role', None))
 
-        if not user.is_authenticated or getattr(user, 'role', None) != 'admin':
-            raise PermissionDenied("Only admins can view credit cards.")
-        
+        if not user.is_authenticated or str(getattr(user, 'role', '')).upper() != 'ADMIN':
+           raise PermissionDenied("Only admins can view credit cards.")
+    
         return CreditCard.objects.all()
 
     def perform_create(self, serializer):

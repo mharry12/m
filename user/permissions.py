@@ -4,7 +4,10 @@ from rest_framework.permissions import BasePermission
 
 class IsAdmin(BasePermission):
     def has_permission(self, request, view):
-        return bool(request.user.is_authenticated and request.user.role == User.ROLE.ADMIN)
+        return (
+            request.user.is_authenticated 
+            and str(request.user.role).upper() == str(User.ROLE.ADMIN).upper()
+        )
 
 
 class IsManager(BasePermission):
