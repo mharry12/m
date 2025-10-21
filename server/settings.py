@@ -22,9 +22,9 @@ SECRET_KEY = 'django-insecure-bagzpeg*%=!%^!vt3^p45txiq-&fx#0egb8%ls(y0d+s6i)e0t
 DEBUG = True
 
 ALLOWED_HOSTS = [
-"127.0.0.1",  # For local testing
-"localhost",
-"stream-l2du.onrender.com"
+"http://127.0.0.1:8000",  # For local testing
+"http://localhost",
+"https://stream-l2du.onrender.com"
 ]
 
 # Application definition
